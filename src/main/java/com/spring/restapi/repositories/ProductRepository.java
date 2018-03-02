@@ -6,16 +6,17 @@
 package com.spring.restapi.repositories;
 
 import com.spring.restapi.models.Product;
-import org.springframework.data.repository.CrudRepository;
+
+import java.util.Optional;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
  *
  * @author didin
  */
-public interface ProductRepository extends CrudRepository<Product, String> {
-    @Override
-    Product findOne(String id);
-
-    @Override
+public interface ProductRepository extends MongoRepository<Product, String> {
+    
+	Optional<Product> findById(String id);
     void delete(Product deleted);
 }

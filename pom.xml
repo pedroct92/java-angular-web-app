@@ -26,9 +26,10 @@
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 			<version>${spring.boot.project.version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-data-rest</artifactId>
 			<version>${spring.boot.project.version}</version>
 		</dependency>
 
@@ -42,6 +43,16 @@
 
 	<build>
 		<plugins>
+		
+		<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+		</plugin>
+		
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -54,9 +65,10 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>{project.groupId}.{project.artifactId}.RestApiApplication</mainClass>
+					<mainClass>com.spring.restapi.RestapiApplication</mainClass>
 				</configuration>
 			</plugin>
+				
 		</plugins>
 	</build>
 
