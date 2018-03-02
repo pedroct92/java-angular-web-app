@@ -1,5 +1,6 @@
-target/
-!.mvn/wrapper/maven-wrapper.jar
+.gradle
+/build/
+!gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###
 .apt_generated
@@ -22,9 +23,3 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
-
-#custom 
-#for index.html frontend resources
-src/main/resources/static
-#for jar in electron-app folder
-electron-app/*.jar
