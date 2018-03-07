@@ -8,6 +8,6 @@ This source code (https://github.com/didinj/springboot-mongodb-restapi-2017) is 
 ## MAVEN SPRING BOOT MONGO DB PROJECT
 Web service with spring-boot and mongodb example project.
 I have *"mavenized"* and fixed errors of the https://github.com/didinj/springboot-mongodb-restapi-2017 gradle project.
-*I have integrated embedded mongodb*
 
-### I need to fix problem with mongoTemplate when I use spring boot version 1.4.0 or higher (now JUnit test with 1.3.5 version not works)
+* integrated mongodb embedded and not with spring profile "mongop"
+* added spring boot 1.3.5.RELEASE test with rest assured : https://blog.jayway.com/2014/07/04/integration-testing-a-spring-boot-application/
