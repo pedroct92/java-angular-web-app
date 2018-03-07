@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.restapi.models.SimpleTime;
+import com.spring.restapi.models.SimpleTimeMongo;
 import com.spring.restapi.repositories.SimpleTimeRepository;
 
 /**
@@ -22,13 +22,13 @@ public class TimeController {
 	SimpleTimeRepository simpleTimeRepository;
 
 	@RequestMapping(path = "/times", method = RequestMethod.GET)
-	public Iterable<SimpleTime> findByRepo() throws IOException {
+	public Iterable<SimpleTimeMongo> findByRepo() throws IOException {
 		return simpleTimeRepository.findAll();
 	}
 
 	@RequestMapping(value = "/times/{value}", method = RequestMethod.GET)
-	public SimpleTime saveByRepo(@PathVariable String value) {
-		SimpleTime model = new SimpleTime();
+	public SimpleTimeMongo saveByRepo(@PathVariable String value) {
+		SimpleTimeMongo model = new SimpleTimeMongo();
 		model.setId(System.currentTimeMillis());
 		model.setValue(value);
 		simpleTimeRepository.save(model);

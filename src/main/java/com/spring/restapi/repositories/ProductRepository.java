@@ -5,7 +5,7 @@
  */
 package com.spring.restapi.repositories;
 
-import com.spring.restapi.models.Product;
+import com.spring.restapi.models.ProductMongo;
 
 import java.util.Optional;
 
@@ -15,8 +15,8 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  *
  * @author amanganiello90
  */
-public interface ProductRepository extends MongoRepository<Product, String> {
+public interface ProductRepository extends MongoRepository<ProductMongo, String> {
 
-	Optional<Product> findById(String id);
+	Optional<ProductMongo> findById(String id);
 
 }

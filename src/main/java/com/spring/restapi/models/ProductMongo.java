@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 
 @Document(collection = "products")
-public class Product {
+public class ProductMongo {
     @Id
     String id;
     String prodName;
@@ -22,10 +22,10 @@ public class Product {
     Double prodPrice;
     String prodImage;
 
-    public Product() {
+    public ProductMongo() {
     }
 
-    public Product(String prodName, String prodDesc, Double prodPrice, String prodImage) {
+    public ProductMongo(String prodName, String prodDesc, Double prodPrice, String prodImage) {
         this.prodName = prodName;
         this.prodDesc = prodDesc;
         this.prodPrice = prodPrice;

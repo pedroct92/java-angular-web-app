@@ -5,7 +5,7 @@
  */
 package com.spring.restapi.controllers;
 
-import com.spring.restapi.models.Product;
+import com.spring.restapi.models.ProductMongo;
 import com.spring.restapi.repositories.ProductRepository;
 
 import java.util.Optional;
@@ -28,26 +28,26 @@ public class ProductController {
     ProductRepository productRepository;
     
     @RequestMapping(method=RequestMethod.GET, value="/products")
-    public Iterable<Product> product() {
+    public Iterable<ProductMongo> product() {
         return productRepository.findAll();
     } 
     
     @RequestMapping(method=RequestMethod.POST, value="/products")
-    public String save(@RequestBody Product product) {
+    public String save(@RequestBody ProductMongo product) {
         productRepository.save(product);
 
         return product.getId();
     }
     
     @RequestMapping(method=RequestMethod.GET, value="/products/{id}")
-    public Optional<Product> show(@PathVariable String id) {
+    public Optional<ProductMongo> show(@PathVariable String id) {
         return productRepository.findById(id);
     }
     
     @RequestMapping(method=RequestMethod.PUT, value="/products/{id}")
-    public Product update(@PathVariable String id, @RequestBody Product product) {
-        Optional<Product> prodOptional = productRepository.findById(id);
-        Product prod= prodOptional.get();
+    public ProductMongo update(@PathVariable String id, @RequestBody ProductMongo product) {
+        Optional<ProductMongo> prodOptional = productRepository.findById(id);
+        ProductMongo prod= prodOptional.get();
         if(product.getProdName() != null)
             prod.setProdName(product.getProdName());
         if(product.getProdDesc() != null)
@@ -62,8 +62,8 @@ public class ProductController {
     
     @RequestMapping(method=RequestMethod.DELETE, value="/products/{id}")
     public String delete(@PathVariable String id) {
-        Optional<Product> prodOptional = productRepository.findById(id);
-        Product product= prodOptional.get();
+        Optional<ProductMongo> prodOptional = productRepository.findById(id);
+        ProductMongo product= prodOptional.get();
         productRepository.delete(product);
 
         return "product deleted";

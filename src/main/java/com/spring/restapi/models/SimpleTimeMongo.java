@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 
 @Document(collection = "time")
-public class SimpleTime {
+public class SimpleTimeMongo {
 
 	@Id
 	private long id;
