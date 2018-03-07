@@ -13,10 +13,10 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
  *
- * @author didin
+ * @author amanganiello90
  */
 public interface ProductRepository extends MongoRepository<Product, String> {
-    
+
 	Optional<Product> findById(String id);
-    void delete(Product deleted);
+
 }

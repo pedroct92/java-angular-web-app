@@ -8,8 +8,6 @@ This source code (https://github.com/didinj/springboot-mongodb-restapi-2017) is 
 ## MAVEN SPRING BOOT MONGO DB PROJECT
 Web service with spring-boot and mongodb example project.
 I have *"mavenized"* and fixed errors of the https://github.com/didinj/springboot-mongodb-restapi-2017 gradle project.
+*I have integrated embedded mongodb*
 
-### Fixed problems of forked source repository tutorial project
-There was a problem to instantiate the crud repository. *You have to add spring-boot-starter-data-rest* dependency in order to automatically implement the interface. 
-Then use the *MongoRepository* that extends CrudRepository class, and not type override annotation on crud methods. 
-Besides, to find with id use *findById* and not *findOne* (the reason is the input and object returned).
+### I need to fix problem with mongoTemplate when I use spring boot version 1.4.0 or higher (now JUnit test with 1.3.5 version not works)
