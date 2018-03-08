@@ -1,9 +1,14 @@
 package com.spring.restapi.repositories;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import java.util.List;
 
-import com.spring.restapi.models.SimpleTimeMongo;
+import com.spring.restapi.models.SimpleTime;
 
-public interface SimpleTimeRepository extends MongoRepository<SimpleTimeMongo, String> {
+public interface SimpleTimeRepository {
 
+	public SimpleTime findById(String id);
+
+	public SimpleTime save(SimpleTime time);
+
+	public List<SimpleTime> findAll();
 }

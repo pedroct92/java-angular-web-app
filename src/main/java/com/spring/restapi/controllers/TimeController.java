@@ -1,6 +1,7 @@
 package com.spring.restapi.controllers;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,31 +9,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.restapi.models.SimpleTimeMongo;
-import com.spring.restapi.repositories.SimpleTimeRepository;
+import com.spring.restapi.models.SimpleTime;
+import com.spring.restapi.services.SimpleTimeService;
 
 /**
  *
  * @author amanganiello90
  */
+
 @RestController
+@RequestMapping(path="/api")
 public class TimeController {
 
 	@Autowired
-	SimpleTimeRepository simpleTimeRepository;
+	SimpleTimeService simpleTimeService;
 
 	@RequestMapping(path = "/times", method = RequestMethod.GET)
-	public Iterable<SimpleTimeMongo> findByRepo() throws IOException {
-		return simpleTimeRepository.findAll();
+	public List<SimpleTime> findTimes() throws IOException {
+		return simpleTimeService.findAll();
 	}
 
 	@RequestMapping(value = "/times/{value}", method = RequestMethod.GET)
-	public SimpleTimeMongo saveByRepo(@PathVariable String value) {
-		SimpleTimeMongo model = new SimpleTimeMongo();
-		model.setId(System.currentTimeMillis());
-		model.setValue(value);
-		simpleTimeRepository.save(model);
-		return model;
+	public SimpleTime saveTime(@PathVariable String value) {
+		return simpleTimeService.save(value);
+
+	}
+	
+	@RequestMapping(value = "/times/find/{value}", method = RequestMethod.GET)
+	public SimpleTime findTimeById(@PathVariable String value) {
+		return simpleTimeService.findById(value);
+
 	}
 
 }

@@ -5,10 +5,10 @@
  */
 package com.spring.restapi.controllers;
 
-import com.spring.restapi.models.ProductMongo;
-import com.spring.restapi.repositories.ProductRepository;
+import com.spring.restapi.models.Product;
+import com.spring.restapi.services.ProductService;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,53 +19,39 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author didin
+ * @author amanganiello90
  */
+
 @RestController
+@RequestMapping(path="/api")
 public class ProductController {
-    
-    @Autowired
-    ProductRepository productRepository;
-    
-    @RequestMapping(method=RequestMethod.GET, value="/products")
-    public Iterable<ProductMongo> product() {
-        return productRepository.findAll();
-    } 
-    
-    @RequestMapping(method=RequestMethod.POST, value="/products")
-    public String save(@RequestBody ProductMongo product) {
-        productRepository.save(product);
 
-        return product.getId();
-    }
-    
-    @RequestMapping(method=RequestMethod.GET, value="/products/{id}")
-    public Optional<ProductMongo> show(@PathVariable String id) {
-        return productRepository.findById(id);
-    }
-    
-    @RequestMapping(method=RequestMethod.PUT, value="/products/{id}")
-    public ProductMongo update(@PathVariable String id, @RequestBody ProductMongo product) {
-        Optional<ProductMongo> prodOptional = productRepository.findById(id);
-        ProductMongo prod= prodOptional.get();
-        if(product.getProdName() != null)
-            prod.setProdName(product.getProdName());
-        if(product.getProdDesc() != null)
-            prod.setProdDesc(product.getProdDesc());
-        if(product.getProdPrice() != null)
-            prod.setProdPrice(product.getProdPrice());
-        if(product.getProdImage() != null)
-            prod.setProdImage(product.getProdImage());
-        productRepository.save(prod);
-        return prod;
-    }
-    
-    @RequestMapping(method=RequestMethod.DELETE, value="/products/{id}")
-    public String delete(@PathVariable String id) {
-        Optional<ProductMongo> prodOptional = productRepository.findById(id);
-        ProductMongo product= prodOptional.get();
-        productRepository.delete(product);
+	@Autowired
+	ProductService productService;
 
-        return "product deleted";
-    }
+	@RequestMapping(method = RequestMethod.GET, value = "/products")
+	public List<Product> products() {
+		return productService.findAll();
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/products")
+	public String save(@RequestBody Product product) {
+
+		return productService.save(product);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/products/{id}")
+	public Product getProductById(@PathVariable String id) {
+		return productService.findById(id);
+	}
+
+	@RequestMapping(method = RequestMethod.PUT, value = "/products/{id}")
+	public Product update(@PathVariable String id, @RequestBody Product product) {
+		return productService.update(id, product);
+	}
+
+	@RequestMapping(method = RequestMethod.DELETE, value = "/products/{id}")
+	public String delete(@PathVariable String id) {
+		return productService.delete(id);
+	}
 }

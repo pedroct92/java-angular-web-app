@@ -42,7 +42,7 @@ public class RestapiApplicationTests {
 
 	@Test
 	public void runningAppWithEmbeddeedMongoDb() {
-		given().when().get("/times").then().statusCode(HttpStatus.SC_OK);
+		given().when().get("/api/times").then().statusCode(HttpStatus.SC_OK);
 	
 
 	}
