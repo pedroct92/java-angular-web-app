@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
@@ -20,6 +20,7 @@ import static com.jayway.restassured.RestAssured.given;
 @SpringApplicationConfiguration(classes = RestapiApplication.class)
 @WebAppConfiguration
 @IntegrationTest("server.port:0")
+@ActiveProfiles("mongo")
 public class RestapiApplicationTests {
 	
 	@Value("${local.server.port}")   
@@ -32,8 +33,16 @@ public class RestapiApplicationTests {
     }
 
 	@Test
-	public void exampleRunningAppWithRunningPortTest() {
+	public void runningAppWithRandomPortTest() {
 		given().when().get("/").then().statusCode(HttpStatus.SC_OK).body(Matchers.is("Hello World!"));
+	
+
+	}
+	
+
+	@Test
+	public void runningAppWithEmbeddeedMongoDb() {
+		given().when().get("/times").then().statusCode(HttpStatus.SC_OK);
 	
 
 	}
