@@ -50,7 +50,10 @@ public class SimpleTimeDAO implements SimpleTimeRepository {
 	public List<SimpleTime> findAll() {
 		// TODO Auto-generated method stub
 		Query query = entityManager.createQuery("SELECT t FROM SimpleTimeJPA t");
-		return query.getResultList();
+		//TypedQuery<SimpleTimeJPA> query = entityManager.createQuery("from SimpleTimeJPA", SimpleTimeJPA.class);
+		// ..maybe model interface..S
+		return query.getResultList() ;
+
 	}
 
 }

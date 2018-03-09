@@ -39,12 +39,14 @@ public class ProductDAO implements ProductRepository {
 	@Transactional
 	public Product save(Product prod) {
 		// TODO Auto-generated method stub
-		if (this.findById(prod.getId()).getId().equals(prod.getId())) {
-			entityManager.merge(prod);
-		} else {
-			entityManager.persist(prod);
+		Product object = this.findById(prod.getId());
+		if (object != null) {
+			if (object.getId().equals(prod.getId())) {
+				entityManager.merge(prod);
+				return prod;
+			}
 		}
-
+		entityManager.persist(prod);
 		return prod;
 	}
 
@@ -52,6 +54,8 @@ public class ProductDAO implements ProductRepository {
 	public List<Product> findAll() {
 		// TODO Auto-generated method stub
 		Query query = entityManager.createQuery("SELECT p FROM ProductJPA p ");
+		//TypedQuery<ProductJPA> query = entityManager.createQuery("from ProductJPA", ProductJPA.class);
+
 		return query.getResultList();
 
 	}
