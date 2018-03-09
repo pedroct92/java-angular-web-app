@@ -1,22 +1,21 @@
-package com.spring.restapi.repositories.dao;
+package com.spring.h2.repositories;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
+import com.spring.h2.models.SimpleTimeJPA;
 import com.spring.restapi.models.SimpleTime;
-import com.spring.restapi.models.entity.SimpleTimeJPA;
 import com.spring.restapi.repositories.SimpleTimeRepository;
 
 /**
  *
  * @author amanganiello90
  */
-@Profile("h2")
+
 @Repository
 public class SimpleTimeDAO implements SimpleTimeRepository {
 

@@ -1,4 +1,4 @@
-package com.spring.restapi.models.entity;
+package com.spring.h2.models;
 
 import java.io.Serializable;
 
@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import com.spring.restapi.models.SimpleTime;
@@ -19,7 +18,7 @@ import com.spring.restapi.models.SimpleTime;
  * @author amanganiello90
  */
 
-@Profile("h2")
+
 @Component
 @Entity
 @Table(name = "time")

@@ -3,31 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.spring.restapi.models.mongo;
+package com.spring.mongo.models;
 
-import org.springframework.context.annotation.Profile;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
 
-
-import com.spring.restapi.models.SimpleTime;
+import com.spring.restapi.models.Product;
 
 /**
  *
  * @author amanganiello90
  */
 
-@Profile({ "mongo", "mongop" })
-@Component
-@Document(collection = "times")
-public class SimpleTimeMongo extends SimpleTime {
 
+
+@Component
+@Document(collection = "products")
+public class ProductMongo extends Product {
+	
 	@Id
 	private String id;
-
+	
 	@Override
-	public SimpleTime factory() {
-		return new SimpleTimeMongo();
+	public Product factory() {
+		return new ProductMongo();
 	}
+
 }

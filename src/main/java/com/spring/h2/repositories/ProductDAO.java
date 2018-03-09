@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.spring.restapi.repositories.dao;
+package com.spring.h2.repositories;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import com.spring.restapi.models.Product;
@@ -20,7 +19,7 @@ import com.spring.restapi.repositories.ProductRepository;
  *
  * @author amanganiello90
  */
-@Profile("h2")
+
 @Repository
 public class ProductDAO implements ProductRepository {
 	
