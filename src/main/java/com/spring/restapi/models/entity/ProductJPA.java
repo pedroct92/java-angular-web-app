@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import com.spring.restapi.models.Product;
 
@@ -18,8 +18,9 @@ import com.spring.restapi.models.Product;
  *
  * @author amanganiello90
  */
-@Repository
+
 @Profile("h2")
+@Component
 @Entity
 @Table(name = "product")
 public class ProductJPA extends Product implements Serializable {

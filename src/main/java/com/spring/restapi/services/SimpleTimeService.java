@@ -31,7 +31,7 @@ public class SimpleTimeService {
 
 	public SimpleTime save(String value) {
 		SimpleTime simpleT = simpleTime.factory();
-		simpleT.setId(System.currentTimeMillis());
+		simpleT.setId(Long.toString(System.currentTimeMillis()));
 		simpleT.setValue(value);
 		simpleTimeRepository.save(simpleT);
 		return simpleT;

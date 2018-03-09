@@ -8,7 +8,7 @@ package com.spring.restapi.models.mongo;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import com.spring.restapi.models.Product;
 
@@ -18,8 +18,8 @@ import com.spring.restapi.models.Product;
  */
 
 
-@Repository
 @Profile({ "mongo", "mongop" })
+@Component
 @Document(collection = "products")
 public class ProductMongo extends Product {
 	

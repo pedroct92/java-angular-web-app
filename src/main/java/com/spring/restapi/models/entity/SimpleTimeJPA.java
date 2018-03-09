@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import com.spring.restapi.models.SimpleTime;
 
@@ -18,8 +18,9 @@ import com.spring.restapi.models.SimpleTime;
  *
  * @author amanganiello90
  */
-@Repository
+
 @Profile("h2")
+@Component
 @Entity
 @Table(name = "time")
 public class SimpleTimeJPA extends SimpleTime implements Serializable {
@@ -31,7 +32,7 @@ public class SimpleTimeJPA extends SimpleTime implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private String id;
 
 	@Column(name = "value")
 	private String value;
