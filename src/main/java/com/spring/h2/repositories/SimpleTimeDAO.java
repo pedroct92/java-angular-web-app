@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
@@ -30,8 +32,16 @@ public class SimpleTimeDAO implements SimpleTimeRepository {
 	}
 
 	@Override
+	@Transactional
 	public SimpleTime save(SimpleTime time) {
 		// TODO Auto-generated method stub
+		SimpleTime object = this.findById(time.getId());
+		if (object != null) {
+			if (object.getId().equals(time.getId())) {
+				entityManager.merge(time);
+				return time;
+			}
+		}
 		entityManager.persist(time);
 		return time;
 	}
@@ -39,7 +49,8 @@ public class SimpleTimeDAO implements SimpleTimeRepository {
 	@Override
 	public List<SimpleTime> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		Query query = entityManager.createQuery("SELECT t FROM SimpleTimeJPA t");
+		return query.getResultList();
 	}
 
 }

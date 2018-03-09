@@ -2,6 +2,8 @@ package com.spring.restapi.services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,10 +31,10 @@ public class SimpleTimeService {
 		return simpleTimeRepository.findById(id);
 	}
 
-	public SimpleTime save(String value) {
+	public SimpleTime save(String id) {
 		SimpleTime simpleT = simpleTime.factory();
-		simpleT.setId(Long.toString(System.currentTimeMillis()));
-		simpleT.setValue(value);
+		simpleT.setId(id);
+		simpleT.setValue(Long.toString(System.currentTimeMillis()));
 		simpleTimeRepository.save(simpleT);
 		return simpleT;
 

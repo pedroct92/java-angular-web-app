@@ -20,7 +20,7 @@ import com.spring.restapi.models.Product;
 
 @Component
 @Entity
-@Table(name = "product")
+@Table(name = "Product")
 public class ProductJPA extends Product implements Serializable {
 
 	/**
@@ -48,6 +48,56 @@ public class ProductJPA extends Product implements Serializable {
 	public Product factory() {
 		// TODO Auto-generated method stub
 		return new ProductJPA();
+	}
+
+	@Override
+	public String getId() {
+		return id;
+	}
+
+	@Override
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	@Override
+	public String getProdName() {
+		return prodName;
+	}
+
+	@Override
+	public void setProdName(String prodName) {
+		this.prodName = prodName;
+	}
+
+	@Override
+	public String getProdDesc() {
+		return prodDesc;
+	}
+
+	@Override
+	public void setProdDesc(String prodDesc) {
+		this.prodDesc = prodDesc;
+	}
+
+	@Override
+	public Double getProdPrice() {
+		return prodPrice;
+	}
+
+	@Override
+	public void setProdPrice(Double prodPrice) {
+		this.prodPrice = prodPrice;
+	}
+
+	@Override
+	public String getProdImage() {
+		return prodImage;
+	}
+
+	@Override
+	public void setProdImage(String prodImage) {
+		this.prodImage = prodImage;
 	}
 
 }

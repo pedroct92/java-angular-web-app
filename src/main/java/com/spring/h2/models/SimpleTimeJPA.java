@@ -21,7 +21,7 @@ import com.spring.restapi.models.SimpleTime;
 
 @Component
 @Entity
-@Table(name = "time")
+@Table(name = "Time")
 public class SimpleTimeJPA extends SimpleTime implements Serializable {
 
 	/**
@@ -30,7 +30,6 @@ public class SimpleTimeJPA extends SimpleTime implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String id;
 
 	@Column(name = "value")
@@ -40,6 +39,26 @@ public class SimpleTimeJPA extends SimpleTime implements Serializable {
 	public SimpleTime factory() {
 		// TODO Auto-generated method stub
 		return new SimpleTimeJPA();
+	}
+	
+	@Override
+	public String getId() {
+		return id;
+	}
+
+	@Override
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	@Override
+	public String getValue() {
+		return value;
+	}
+
+	@Override
+	public void setValue(String value) {
+		this.value = value;
 	}
 
 }

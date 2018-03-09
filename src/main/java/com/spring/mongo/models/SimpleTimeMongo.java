@@ -18,7 +18,7 @@ import com.spring.restapi.models.SimpleTime;
  */
 
 @Component
-@Document(collection = "times")
+@Document(collection = "Times")
 public class SimpleTimeMongo extends SimpleTime {
 
 	@Id

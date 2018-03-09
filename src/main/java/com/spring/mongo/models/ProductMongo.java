@@ -19,7 +19,7 @@ import com.spring.restapi.models.Product;
 
 
 @Component
-@Document(collection = "products")
+@Document(collection = "Products")
 public class ProductMongo extends Product {
 	
 	@Id
