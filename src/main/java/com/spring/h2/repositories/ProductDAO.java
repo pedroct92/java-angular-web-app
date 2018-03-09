@@ -5,6 +5,7 @@
  */
 package com.spring.h2.repositories;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.restapi.models.Product;
 import com.spring.h2.models.ProductJPA;
 import com.spring.restapi.repositories.ProductRepository;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 /**
@@ -28,6 +29,7 @@ public class ProductDAO implements ProductRepository {
 
 	@PersistenceContext
 	private EntityManager entityManager;
+	private List<Product> products;
 
 	@Override
 	public Product findById(String id) {
@@ -53,10 +55,15 @@ public class ProductDAO implements ProductRepository {
 	@Override
 	public List<Product> findAll() {
 		// TODO Auto-generated method stub
-		Query query = entityManager.createQuery("SELECT p FROM ProductJPA p ");
-		//TypedQuery<ProductJPA> query = entityManager.createQuery("from ProductJPA", ProductJPA.class);
-
-		return query.getResultList();
+		// Query query = entityManager.createQuery("SELECT p FROM ProductJPA p
+		// ");
+		TypedQuery<ProductJPA> query = entityManager.createQuery("from ProductJPA", ProductJPA.class);
+		products = new ArrayList<Product>();
+		List<ProductJPA> prods = query.getResultList();
+		for (int i = 0; i < prods.size(); i++) {
+			products.add(prods.get(i));
+		}
+		return products;
 
 	}
 

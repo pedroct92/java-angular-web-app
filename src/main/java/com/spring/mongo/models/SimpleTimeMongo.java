@@ -19,13 +19,35 @@ import com.spring.restapi.models.SimpleTime;
 
 @Component
 @Document(collection = "Times")
-public class SimpleTimeMongo extends SimpleTime {
+public class SimpleTimeMongo implements SimpleTime {
 
 	@Id
 	private String id;
+	
+	private String value;
 
 	@Override
 	public SimpleTime factory() {
 		return new SimpleTimeMongo();
+	}
+
+	@Override
+	public String getId() {
+		return id;
+	}
+
+	@Override
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	@Override
+	public String getValue() {
+		return value;
+	}
+
+	@Override
+	public void setValue(String value) {
+		this.value = value;
 	}
 }

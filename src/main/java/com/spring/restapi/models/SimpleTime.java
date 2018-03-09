@@ -1,35 +1,18 @@
 package com.spring.restapi.models;
 
-
 /**
-*
-* @author amanganiello90
-*/
-public abstract class SimpleTime {
+ *
+ * @author amanganiello90
+ */
+public interface SimpleTime {
 
-	private String id;
+	public String getId();
 
-	private String value;
+	public void setId(String id);
 
-	
-	public String getId() {
-		return id;
-	}
+	public String getValue();
 
+	public void setValue(String value);
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	
-	public String getValue() {
-		return value;
-	}
-
-	
-	public void setValue(String value) {
-		this.value = value;
-	}
-	
-	public abstract SimpleTime factory();
+	public SimpleTime factory();
 }

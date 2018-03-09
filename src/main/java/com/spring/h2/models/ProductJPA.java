@@ -21,7 +21,7 @@ import com.spring.restapi.models.Product;
 @Component
 @Entity
 @Table(name = "Product")
-public class ProductJPA extends Product implements Serializable {
+public class ProductJPA implements Product, Serializable {
 
 	/**
 	 * 

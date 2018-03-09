@@ -1,10 +1,11 @@
 package com.spring.h2.repositories;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -23,6 +24,7 @@ public class SimpleTimeDAO implements SimpleTimeRepository {
 
 	@PersistenceContext
 	private EntityManager entityManager;
+	private List<SimpleTime> times;
 
 	@Override
 	public SimpleTime findById(String id) {
@@ -49,10 +51,17 @@ public class SimpleTimeDAO implements SimpleTimeRepository {
 	@Override
 	public List<SimpleTime> findAll() {
 		// TODO Auto-generated method stub
-		Query query = entityManager.createQuery("SELECT t FROM SimpleTimeJPA t");
-		//TypedQuery<SimpleTimeJPA> query = entityManager.createQuery("from SimpleTimeJPA", SimpleTimeJPA.class);
-		// ..maybe model interface..S
-		return query.getResultList() ;
+		// Query query = entityManager.createQuery("SELECT t FROM SimpleTimeJPA
+		// t");
+		TypedQuery<SimpleTimeJPA> query = entityManager.createQuery("from SimpleTimeJPA", SimpleTimeJPA.class);
+
+		times = new ArrayList<SimpleTime>();
+
+		List<SimpleTimeJPA> timesj = query.getResultList();
+		for (int i = 0; i < timesj.size(); i++) {
+			times.add(timesj.get(i));
+		}
+		return times;
 
 	}
 
