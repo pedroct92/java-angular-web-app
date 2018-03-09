@@ -9,13 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Repository;
+
 import com.spring.restapi.models.SimpleTime;
 
 /**
  *
  * @author amanganiello90
  */
-
+@Repository
+@Profile("h2")
 @Entity
 @Table(name = "time")
 public class SimpleTimeJPA extends SimpleTime implements Serializable {
