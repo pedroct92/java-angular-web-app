@@ -28,7 +28,8 @@ public class ProductController {
 
 	@Autowired
 	ProductService productService;
-
+	
+	
 	@RequestMapping(method = RequestMethod.GET, value = "/products")
 	public List<Product> products() {
 		return productService.findAll();

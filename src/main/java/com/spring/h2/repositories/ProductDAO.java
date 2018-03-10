@@ -68,6 +68,7 @@ public class ProductDAO implements ProductRepository {
 	}
 
 	@Override
+	@Transactional
 	public void delete(Product prod) {
 		// TODO Auto-generated method stub
 		entityManager.remove(prod);

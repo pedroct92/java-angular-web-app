@@ -1,9 +1,18 @@
 package com.spring.restapi.models;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.spring.h2.models.ProductJPA;
+import com.spring.mongo.models.ProductMongo;
+
 /**
  *
  * @author amanganiello90
  */
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({ @Type(value = ProductJPA.class, name = "productJPA"), @Type(value = ProductMongo.class, name = "productMongo") })
 public interface Product {
 
 	public String getId();

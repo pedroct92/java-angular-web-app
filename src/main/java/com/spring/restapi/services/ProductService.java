@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.spring.restapi.models.Product;
 import com.spring.restapi.repositories.ProductRepository;
 
-
 /**
  *
  * @author amanganiello90
@@ -36,23 +35,10 @@ public class ProductService {
 
 	}
 
-	public Product update(String id, Product productRequest) {
+	public Product update(String id, Product prod) {
 
-		Product prod = this.findById(id);
-		//if not exist then create
-		if(prod==null){
-		prod=product.factory();
-			prod.setId(id);
-		}
+		prod.setId(id);
 
-		if (productRequest.getProdName() != null)
-			prod.setProdName(productRequest.getProdName());
-		if (productRequest.getProdDesc() != null)
-			prod.setProdDesc(productRequest.getProdDesc());
-		if (productRequest.getProdPrice() != null)
-			prod.setProdPrice(productRequest.getProdPrice());
-		if (productRequest.getProdImage() != null)
-			prod.setProdImage(productRequest.getProdImage());
 		this.save(prod);
 		return prod;
 	}
