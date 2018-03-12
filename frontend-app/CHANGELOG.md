@@ -1,4 +1,4 @@
-##Forked https://github.com/creativetimofficial/material-dashboard-angular - 12/03/2018
+## Forked https://github.com/creativetimofficial/material-dashboard-angular - 12/03/2018
 
 ## [1.4.2] - 2017-10-01
 ### Fixes
